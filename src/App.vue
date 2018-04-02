@@ -5,14 +5,14 @@
     <div class="player-details combatant-details">
       <div class="name">{{ player.name.toUpperCase() }}</div>
       <div class="life-bar-container">
-        <div class="life-bar"></div>
+        <div class="life-bar" :style="{ width: playerLifeBarWidth }"></div>
         <span class="life-total">{{ player.life }}</span>
       </div>
     </div>
     <div class="monster-details combatant-details">
       <div class="name">{{ monster.name.toUpperCase() }}</div>
       <div class="life-bar-container">
-        <div class="life-bar"></div>
+        <div class="life-bar" :style="{ width: monsterLifeBarWidth }"></div>
         <span class="life-total">{{ monster.life }}</span>
       </div>
     </div>
@@ -91,6 +91,12 @@ export default {
   computed: {
     reversedLogs() {
       return [...this.logs].reverse();
+    },
+    playerLifeBarWidth() {
+      return this.player.life > 0 ? `${Math.min(this.player.life, 100)}%` : 0
+    },
+    monsterLifeBarWidth() {
+      return this.monster.life > 0 ? `${Math.min(this.monster.life, 100)}%` : 0
     },
   },
   methods: {
