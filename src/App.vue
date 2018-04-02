@@ -173,6 +173,7 @@ export default {
   width: 100%;
   height: 100%;
   background: lightgreen;
+  transition: width 300ms;
 }
 
 .life-total {
